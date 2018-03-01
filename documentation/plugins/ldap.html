@@ -113,7 +113,7 @@
 
 <li><strong>Verify Server Certificate</strong> – Whether or not to verify the server’s public certificate with a local certificate or certificate store. When this option is selected, the connection will fail if the server’s certificate does not validate.</li>
 
-<li><strong>SSL/TLS Certificate</strong> (optional) – If you have selected “Verify Server Certificate,” you can provide a copy of the server’s public SSL/TLS certificate here. The certificate should be provided in the “PEM” format that is the default for OpenSSL. If this field is left blank, the plugin will attempt to use the Windows certificate store to validate the certificate.</li>
+<li><strong>SSL/TLS Certificate</strong> (optional) – If you have selected “Verify Server Certificate,” you can provide a copy of the server’s public SSL/TLS certificate here. The certificate should be provided in the “PEM” format that is the default for OpenSSL. If this field is left blank, the plugin will attempt to use the Windows (Computer account) certificate store to validate the certificate. <br />You can also store the Certificate in the Windows (Computer account) certificate store and put MATCH in the SSL/TLS Certificate text box.</li>
 
 <li><strong>Search DN</strong> – The DN to use when binding to the server in order to perform searches. If this is left empty, the plugin will attempt to bind anonymously. This is used for searching for group membership or for searching for a user’s DN.</li>
 
