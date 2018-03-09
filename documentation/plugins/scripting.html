@@ -64,7 +64,17 @@
 
 <p>If a program can’t be run an error is returned.</p>
 
-<p>Programs will run in sync, and the return status will be ignored.</p>
+<p><b>Programs will run in sync</b> (one after another), and the return status will be ignored.</p>
+
+<p>You must ensure that every script is terminating, and doesn’t block the plugin.</p>
+
+<p>This is especially important during logon’s. If your script is blocking than the whole plugin will block which leads to a pGina block.</p>
+
+<p>If you want to run a programm in the background you need to start it trough a launcher.</p>
+
+<p>‘cmd.exe /k’ would block</p>
+
+<p>‘cmd.exe /c start ”” /i cmd.exe /k’ would not</p>
 
 <p>Always consider the <a href="http://mutonufoai.github.io/pgina/documentation/user.html#ordering_plugins">Plugin Order</a></p>
 
