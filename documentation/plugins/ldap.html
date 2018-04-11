@@ -211,13 +211,31 @@
 
 <li>SSHA1 – a salted SHA1 password, designed for LDAP attribute <strong>userPassword</strong></li>
 
+<li>SHA256 – an SHA256 hash password, designed for LDAP attribute <strong>userPassword</strong></li>
+
+<li>SSHA256 – a salted SHA256 password, designed for LDAP attribute <strong>userPassword</strong></li>
+
+<li>SHA384 – an SHA384 hash password, designed for LDAP attribute <strong>userPassword</strong></li>
+
+<li>SSHA384 – a salted SHA384 password, designed for LDAP attribute <strong>userPassword</strong></li>
+
+<li>SHA512 – an SHA512 hash password, designed for LDAP attribute <strong>userPassword</strong></li>
+
+<li>SSHA512 – a salted SHA512 password, designed for LDAP attribute <strong>userPassword</strong></li>
+
 <li>NTLM – an NTLM password, designed for LDAP attribute <strong>sambaNTPassword</strong></li>
 
 <li>LM – an LM password, designed for LDAP attribute <strong>sambaLMPassword</strong></li>
 
+<li>Select to change an AD password – to change a password in an Active Directory</li>
+
 <li>Timestamp sec since ‘70 – seconds passed since 1970.01.01, designed for LDAP attribute <strong>sambaPwdLastSet</strong></li>
 
 <li>Timestamp days since ‘70 – days passed since 1970.01.01, designed for LDAP attribute <strong>shadowLastChange</strong></li>
+
+<li>Timestamp days since ‘70 – days passed since 1970.01.01, designed for LDAP attribute <strong>shadowLastChange</strong></li>
+
+<li>Timestamp ticks since 1601 – Windows filetime</li>
 </ul>
 
 <p>If you manipulate the attribute sambaPwdLastSet the attribute sambaPwdMustChange will also be changed:</p>
