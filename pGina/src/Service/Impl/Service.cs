@@ -334,19 +334,33 @@ namespace pGina.Service.Impl
                         // pc is member of this domain provided by the username field
                         if (Abstractions.WindowsApi.pInvokes.ValidateUser(sessionDriver.UserInformation.Username, sessionDriver.UserInformation.Domain, sessionDriver.UserInformation.Password))
                         {
-                            if (LastUsernameEnable && msg.Reason == LoginRequestMessage.LoginReason.Login)
+                      var resultA = sessionDriver.AuthorizeUser();
+                            if (!resultA.Success)
                             {
-                                Settings.s_settings.SetSetting("LastUsername", String.Format("{0}\\{1}", sessionDriver.UserInformation.Domain, sessionDriver.UserInformation.Username));
+                                m_logger.InfoFormat("Failed Auth");
+                                return new LoginResponseMessage()
+                                {
+                                    Result = false,
+                                    Message = resultA.Message,
+                                    Username = sessionDriver.UserInformation.Username,
+                                    Domain = sessionDriver.UserInformation.Domain,
+                                    Password = sessionDriver.UserInformation.Password
+                                };
                             }
-                            m_logger.InfoFormat("Sucess");
-                            return new LoginResponseMessage()
+                             resultA = sessionDriver.GatewayProcess();
+                            if (!resultA.Success)
                             {
-                                Result = true,
-                                Message = "",
-                                Username = sessionDriver.UserInformation.Username,
-                                Domain = sessionDriver.UserInformation.Domain,
-                                Password = sessionDriver.UserInformation.Password
-                            };
+                                m_logger.InfoFormat("Failed Gateway");
+                                return new LoginResponseMessage()
+                                {
+                                    Result = false,
+                                    Message = resultA.Message,
+                                    Username = sessionDriver.UserInformation.Username,
+                                    Domain = sessionDriver.UserInformation.Domain,
+                                    Password = sessionDriver.UserInformation.Password
+                                };
+                            }
+
                         }
                         else
                         {
